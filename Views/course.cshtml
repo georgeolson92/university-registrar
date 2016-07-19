@@ -19,21 +19,22 @@
   }
 </ul>
 
+@if (Model["all-students"].Count != 0)
+{
 <h3>Add student to course</h3>
 <form action="/courses/add/student" method="post">
-  <input name="course-id" value=@Model["course"].GetId()>
+  <input name="course-id" value=@Model["course"].GetId() type="hidden">
   <select name="student-name">
-    @if (Model["all-students"].Count != 0)
-    {
       @foreach (var student in Model["all-students"])
       {
         <option value=@student.GetId()>@student.GetName()</option>
       }
-    }
+
   </select>
   <button type="submit">Add student</button>
 </form>
+}
 
-<a href='@Model["course"].GetId()/delete'>Delete this course</a>
+<a href='/courses/@Model["course"].GetId()/delete'>Delete this course</a>
 
 <a href="/">Back</a>

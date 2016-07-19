@@ -104,6 +104,26 @@ namespace University
       Assert.Equal(result, testResult);
     }
 
+    // [Fact]
+    // public void Test_RemovesCourseFromStudent()
+    // {
+    //   //Arrange
+    //   Student firstStudent = new Student("Sam", "February 5th, 2016");
+    //   firstStudent.Save();
+    //   Course firstCourse = new Course("Intro to Programming", "PR101");
+    //   firstCourse.Save();
+    //   firstStudent.AddCourse(firstCourse);
+    //
+    //   //Act
+    //   firstStudent.RemoveCourse(firstCourse);
+    //
+    //   List<Course> courses = firstStudent.GetCourses();
+    //   List<Course> expectedCourses = List<Course>{};
+    //
+    //   //Assert
+    //   Assert.Equal(courses, expectedCourses);
+    // }
+
 
   }
 }

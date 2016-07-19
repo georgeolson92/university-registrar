@@ -216,6 +216,26 @@ namespace University.Objects
       }
     }
 
+    // public void RemoveCourse(Course newCourse)
+    // {
+    //   SqlConnection conn = DB.Connection();
+    //   conn.Open();
+    //
+    //   SqlCommand cmd = new SqlCommand("DELETE FROM student_course WHERE course_id = @CourseId;", conn);
+    //
+    //   SqlParameter courseIdParameter = new SqlParameter();
+    //   courseIdParameter.ParameterName = "@CourseId";
+    //   courseIdParameter.Value = newCourse.GetId();
+    //
+    //   cmd.Parameters.Add(courseIdParameter);
+    //   cmd.ExecuteNonQuery();
+    //
+    //   if (conn != null)
+    //   {
+    //     conn.Close();
+    //   }
+    // }
+
     public List<Course> GetCourses()
     {
       SqlConnection conn = DB.Connection();

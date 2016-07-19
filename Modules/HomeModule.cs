@@ -43,6 +43,32 @@ namespace University
         model.Add("courses", allCourses);
         return View["index.cshtml", model];
       };
+      Get["/students/all/delete/"] = _ => {
+        List<Student> allStudents = Student.GetAll();
+        return View["delete_allstudents.cshtml", allStudents];
+      };
+      Get["/courses/all/delete/"] = _ => {
+        List<Course> allCourses = Course.GetAll();
+        return View["delete_allcourses.cshtml", allCourses];
+      };
+      Delete["/students/all/delete/"] = _ => {
+        Student.DeleteAll();
+        List<Student> allStudents = Student.GetAll();
+        List<Course> allCourses = Course.GetAll();
+        Dictionary<string, object> model = new Dictionary<string, object> {};
+        model.Add("students", allStudents);
+        model.Add("courses", allCourses);
+        return View["index.cshtml", model];
+      };
+      Delete["/courses/all/delete/"] = _ => {
+        Course.DeleteAll();
+        List<Student> allStudents = Student.GetAll();
+        List<Course> allCourses = Course.GetAll();
+        Dictionary<string, object> model = new Dictionary<string, object> {};
+        model.Add("students", allStudents);
+        model.Add("courses", allCourses);
+        return View["index.cshtml", model];
+      };
       Get["/students/{id}/delete/"] = parameters => {
         int studentId = parameters.id;
         Student foundStudent = Student.Find(studentId);
@@ -124,6 +150,20 @@ namespace University
         model.Add("students", foundStudents);
         model.Add("all-students", allStudents);
         return View["course.cshtml", model];
+      };
+      Post["students/{id}/withdraw"] = parameters => {
+        int studentSearch = parameters.id;
+        int courseSearch = Request.Form["course-name"];
+        Student foundStudent = Student.Find(studentSearch);
+        Course newCourse = Course.Find(courseSearch);
+        foundStudent.AddCourse(newCourse);
+        List<Course> foundCourses = foundStudent.GetCourses();
+        List<Course> allCourses = Course.GetAll();
+        Dictionary<string, object> model = new Dictionary<string, object> {};
+        model.Add("student", foundStudent);
+        model.Add("courses", foundCourses);
+        model.Add("all-courses", allCourses);
+        return View["student.cshtml", model];
       };
     }
   }

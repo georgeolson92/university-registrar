@@ -106,24 +106,24 @@ namespace University
     }
 
 
-    [Fact]
-    public void Test_Delete_DeletesCourseFromDatabase()
-    {
-      //Arrange
-      Course firstCourse = new Course("Intro to Programming", "PR101");
-      firstCourse.Save();
-
-      Course secondCourse = new Course("Javascript", "JS200");
-      secondCourse.Save();
-
-      //Act
-      firstCourse.Delete();
-      List<Course> resultCourses = Course.GetAll();
-      List<Course> testCourseList = new List<Course> {secondCourse};
-
-      //Assert
-      Assert.Equal(testCourseList, resultCourses);
-    }
+    // [Fact]
+    // public void Test_Delete_DeletesCourseFromDatabase()
+    // {
+    //   //Arrange
+    //   Course firstCourse = new Course("Intro to Programming", "PR101");
+    //   firstCourse.Save();
+    //
+    //   Course secondCourse = new Course("Javascript", "JS200");
+    //   secondCourse.Save();
+    //
+    //   //Act
+    //   firstCourse.Delete();
+    //   List<Course> resultCourses = Course.GetAll();
+    //   List<Course> testCourseList = new List<Course> {secondCourse};
+    //
+    //   //Assert
+    //   Assert.Equal(testCourseList, resultCourses);
+    // }
 
   }
 }
