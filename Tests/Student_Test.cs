@@ -73,7 +73,7 @@ namespace University
     }
 
     [Fact]
-    public void Test_Find_FindsTaskInDatabase()
+    public void Test_Find_FindsStudentInDatabase()
     {
       //Arrange
       Student testStudent = new Student("Sam", "February 5th, 2016");
@@ -84,6 +84,24 @@ namespace University
 
       //Assert
       Assert.Equal(testStudent, foundStudent);
+    }
+
+    [Fact]
+    public void Test_Delete_DeletesStudentFromDatabase()
+    {
+      //Arrange
+      Student firstStudent = new Student("Sam", "February 5th, 2016");
+      firstStudent.Save();
+      Student secondStudent = new Student("Sam", "February 5th, 2016");
+      secondStudent.Save();
+
+      //Act
+      firstStudent.Delete();
+      List<Student> result = Student.GetAll();
+      List<Student> testResult = new List<Student>{secondStudent};
+
+      //Assert
+      Assert.Equal(result, testResult);
     }
 
 
