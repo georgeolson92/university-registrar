@@ -1,0 +1,33 @@
+<h1>University Registrar</h1>
+
+<h3>Students</h3>
+<ul>
+  @if (Model["students"].Count != 0)
+  {
+    @foreach (var student in Model["students"])
+    {
+      <li>@student.GetName()</li>
+    }
+  }
+  else
+  {
+    <li>No students yet.</li>
+  }
+</ul>
+<a href="/students/new">Add a new student</a>
+
+<h3>Courses</h3>
+<ul>
+  @if (Model["courses"].Count != 0)
+  {
+    @foreach (var course in Model["courses"])
+    {
+      <li>@course.GetName()</li>
+    }
+  }
+  else
+  {
+    <li>No students yet.</li>
+  }
+</ul>
+<a href="/courses/new">Add a new course</a>
