@@ -87,7 +87,23 @@ namespace University
     }
 
 
+    [Fact]
+    public void Test_GetStudents_RetrievesAllStudentsWithCategory()
+    {
+      Course testCourse = new Course("Intro to Programming", "PR101");
+      testCourse.Save();
 
+      Student firstStudent = new Student("Sam", "February 5th, 2016");
+      firstStudent.Save();
+      Student secondStudent = new Student("Sam", "February 5th, 2016");
+      secondStudent.Save();
+
+      testCourse.AddStudent(firstStudent);
+      List<Student> testStudentList = new List<Student> {firstStudent};
+      List<Student> resultStudentList = testCourse.GetStudents();
+
+      Assert.Equal(testStudentList, resultStudentList);
+    }
 
 
     [Fact]

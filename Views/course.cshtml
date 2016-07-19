@@ -1,0 +1,39 @@
+<h1>University Registrar</h1>
+
+<h2>@Model["course"].GetName()</h2>
+
+<p>@Model["course"].GetCourseNumber()</p>
+
+<h3>Students in Course</h3>
+<ul>
+  @if (Model["students"].Count != 0)
+  {
+    @foreach (var student in Model["students"])
+    {
+      <li><a href="/students/@student.GetId()">@student.GetName()</a></li>
+    }
+  }
+  else
+  {
+    <li>No students yet.</li>
+  }
+</ul>
+
+<h3>Add student to course</h3>
+<form action="/courses/add/student" method="post">
+  <input name="course-id" value=@Model["course"].GetId()>
+  <select name="student-name">
+    @if (Model["all-students"].Count != 0)
+    {
+      @foreach (var student in Model["all-students"])
+      {
+        <option value=@student.GetId()>@student.GetName()</option>
+      }
+    }
+  </select>
+  <button type="submit">Add student</button>
+</form>
+
+<a href='@Model["course"].GetId()/delete'>Delete this course</a>
+
+<a href="/">Back</a>

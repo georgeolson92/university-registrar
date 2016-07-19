@@ -1,0 +1,7 @@
+<h1>University Registrar</h1>
+<h3>Are you sure you want to delete the student @Model.GetName()?</h3>
+<form action="/students/@Model.GetId()/delete" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <button type="submit">DELETE</button>
+  <a href="/"><button type="button">No, go back</button></a>
+</form>

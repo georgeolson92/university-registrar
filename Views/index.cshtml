@@ -6,7 +6,7 @@
   {
     @foreach (var student in Model["students"])
     {
-      <li>@student.GetName()</li>
+      <li><a href="/students/@student.GetId()">@student.GetName()</a></li>
     }
   }
   else
@@ -22,7 +22,7 @@
   {
     @foreach (var course in Model["courses"])
     {
-      <li>@course.GetName()</li>
+      <li><a href="/courses/@course.GetId()">@course.GetName()</a></li>
     }
   }
   else
